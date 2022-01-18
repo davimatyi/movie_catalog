@@ -9,6 +9,7 @@ $text-color: #eeeeee;
   height: 200px;
   display: block;
   color: $text-color;
+  cursor: pointer;
 
   transition: {
     property: background-color;
@@ -51,4 +52,30 @@ $text-color: #eeeeee;
 
 .card-footer {
   clear: both;
+}
+
+.ratings {
+  margin-left: 25px;
+}
+
+.rating-box {
+  width: 100px;
+  height: 20px;
+  background: lighten($primary-bg, 15);
+  border-radius: 5px;
+  float: left;
+  margin-top: 2px;
+}
+
+.rating-bar {
+  background-color: lightgreen;
+  height: 20px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.rating-text {
+  float: left;
+  margin-left: 10px;
+  font-size: 18px;
 }
