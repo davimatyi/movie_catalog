@@ -45,7 +45,17 @@ function App() {
 
   return (
     <div className="App">
-      <input className="input" value={searchTerm} onChange={(evt) => updateSearch(evt.target.value)}></input>
+      <header>
+        <div className="search-container">
+          <input
+            title="Search"
+            className="searchbox"
+            value={searchTerm}
+            onChange={(evt) => updateSearch(evt.target.value)}
+            placeholder="Search for movies"
+          ></input>
+        </div>
+      </header>
       <div className="cards-container">
         {movies.map((item: MovieInfo, index: number) => {
           return <MovieCard key={index} info={item} />

@@ -1,0 +1,42 @@
+$primary-bg: #333333;
+$secondary-bg: #424242;
+$text-color: #eeeeee;
+
+body {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $primary-bg;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px 0 20px 0;
+  background-color: $secondary-bg;
+}
+
+.search-container {
+  width: 500px;
+  margin: auto;
+  margin-top: 0;
+  padding: 0;
+}
+
+.searchbox {
+  width: 100%;
+  font-size: 26px;
+  margin: 0;
+  background-color: lighten($secondary-bg, 5);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: $text-color;
+}
+
+.cards-container {
+  width: 550px;
+  margin: auto;
+  margin-top: 100px;
+}

@@ -25,9 +25,8 @@ const MovieCard: FC<MovieInterface> = ({ info }): JSX.Element => {
         <Poster path={info.poster_path} fallback={poster_fallback} />
       </div>
       <div className="card-right">
-        <div className="card-title">
-          {info.title}
-        </div>
+        <div className="card-title">{ info.title }</div>
+        <div className="card-date">{ info.release_date }</div>
       </div>
       <div className="card-footer">
 
