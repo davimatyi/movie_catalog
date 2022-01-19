@@ -3,18 +3,53 @@ $secondary-bg: #424242;
 $text-color: #eeeeee;
 
 body {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   background-color: $primary-bg;
+  color: $text-color;
 }
 
 header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  padding: 20px 0 20px 0;
+  // width: 100%;
+  padding: 25px 0 20px 20px;
   background-color: $secondary-bg;
+
+  .title {
+    width: fit-content;
+    margin: 0;
+    font-size: 36px;
+  }
+}
+
+.header-about {
+  float: right;
+  width: 120px;
+  font-size: 24px;
+  height: 50px;
+  text-align: center;
+  background-color: lighten($secondary-bg, 15);
+  padding-top: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+
+  transition: {
+    property: background-color;
+    duration: 0.2s;
+  }
+
+  &:hover {
+    background-color: lighten($primary-bg, 25);
+  }
+}
+
+.search-bar {
+  position: sticky;
+  position: -webkit-sticky;
+  padding: 10px 0 10px 0;
+  background-color: $secondary-bg;
+  top: 0;
 }
 
 .search-container {
@@ -22,21 +57,30 @@ header {
   margin: auto;
   margin-top: 0;
   padding: 0;
-}
 
-.searchbox {
-  width: 100%;
-  font-size: 26px;
-  margin: 0;
-  background-color: lighten($secondary-bg, 5);
-  border: none;
-  padding: 10px;
-  border-radius: 10px;
-  color: $text-color;
+  input {
+    width: calc(100% - 30px);
+    font-size: 26px;
+    margin: 0;
+    background-color: lighten($secondary-bg, 10);
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    color: $text-color;
+
+    transition: {
+      property: background-color;
+      duration: 0.2s;
+    }
+  
+    &:hover {
+      background-color: lighten($secondary-bg, 15);
+    }
+  }
 }
 
 .cards-container {
   width: 550px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 20px;
 }
