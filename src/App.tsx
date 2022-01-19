@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { MovieInfo, QueryResponse } from './components/Interfaces';
 import MovieCard from './components/Card/Card';
+import TopBar from './components/TopBar/TopBar';
 import './App.scss';
 
 
@@ -45,20 +46,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <span className="title">The Movie Catalog</span>
-        <div className="header-about">About</div>
-      </header>
-      <div className="search-bar">
-        <div className="search-container">
-          <input
-            title="Search"
-            value={searchTerm}
-            onChange={(evt) => updateSearch(evt.target.value)}
-            placeholder="Search for movies"
-          ></input>
-        </div>
-      </div>
+      <TopBar val={searchTerm} fun={updateSearch} />
       <div className="cards-container">
         {movies.map((item: MovieInfo, index: number) => {
           return <MovieCard key={index} info={item} />
