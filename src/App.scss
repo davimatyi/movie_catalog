@@ -8,12 +8,41 @@ body {
   padding: 0;
   background-color: $primary-bg;
   color: $text-color;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
+main {
+  padding: none;
+  margin: none;
+  overflow: hidden;
 }
 
 .cards-container {
   width: 40%;
-  margin: auto;
+  min-width: 420px;
   margin-top: 20px;
+  float: left;
+  overflow: visible;
+}
+
+.cards-aligner {
+  float: left;
+  height: 100px;
+  width: 30%;
+  transition-timing-function: cubic-bezier(0.56, 0.03, 0.67, 0.74);
+
+  transition: {
+    property: width;
+    duration: 0.3s;
+  }
 }
 
 a {

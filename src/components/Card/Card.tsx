@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { MovieInterface, PosterInterface } from '../Interfaces';
+import { MovieInfo, PosterInterface } from '../Interfaces';
 import poster_fallback from '../../assets/poster_fallback.jpg';
 import './Card.scss';
 
@@ -31,16 +31,20 @@ const RatingBar: FC<{ avg: number }> = ({ avg }) => {
   );
 }
 
-const MovieCard: FC<MovieInterface> = ({ info }) => {
+const MovieCard: FC<{info: MovieInfo, onClick: Function}> = ({ info, onClick }) => {
   return (
-    <div className="card">
+    <div className="card" onClick={() => onClick(info)}>
       <div className="card-left">
         <Poster path={info.poster_path} fallback={poster_fallback} />
       </div>
       <div className="card-right">
-        <div className="card-title">{info.title}</div>
-        <div className="card-date">{info.release_date}</div>
-        <RatingBar avg={info.vote_average} />
+        <div className="card-right-top">
+          <div className="card-title">{info.title}</div>
+          <div className="card-date">{info.release_date}</div>
+        </div>
+        <div className="card-right-bottom">
+          <RatingBar avg={info.vote_average} />
+        </div>
       </div>
       <div className="card-footer">
 

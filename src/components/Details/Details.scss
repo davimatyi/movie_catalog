@@ -1,0 +1,53 @@
+$primary-bg: #5e5e5e;
+$text-color: #eeeeee;
+
+#details-container {
+  height: 100%;
+  float: left;
+  width: 60%;
+  display: unset;
+}
+
+#details-box {
+  background-color: darken($primary-bg, 15);
+  width: calc(100% - 50px);
+  // max-width: 700px;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
+  position: sticky;
+  top: 0;
+
+  transition: {
+    property: opacity;
+    duration: 0.3s;
+  }
+
+  opacity: 0;
+}
+
+.details-title {
+  font-size: 32px;
+  font-weight: 600;
+  padding: 10px;
+  width: calc(100% - 80px);
+  float: left;
+}
+
+.details-close {
+  float: right;
+  cursor: pointer;
+
+  img {
+    width: 40px;
+    margin: 10px;
+  }
+}
+
+.details-overview {
+  padding-left: 20px;
+}

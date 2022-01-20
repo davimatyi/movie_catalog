@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
-import { MovieInfo, QueryResponse } from './components/Interfaces';
+import { EmptyMovieInfo, MovieInfo, QueryResponse } from './components/Interfaces';
 import MovieCard from './components/Card/Card';
 import TopBar from './components/TopBar/TopBar';
 import './App.scss';
+import DetailsBox from './components/Details/Details';
 
 
 const apiUrl: string = 'https://api.themoviedb.org/3/search/';
@@ -34,6 +35,47 @@ function App() {
 
   const [movies, setMovies] = useState<MovieInfo[]>([]);
   const [searchTerm, updateSearch] = useState<string>('');
+  const [detailsShown, setShowDetails] = useState<boolean>(false);
+  const [detailsInfo, setDetailsInfo] = useState<MovieInfo>(EmptyMovieInfo);
+
+  const alignerRef = useRef<HTMLDivElement>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
+
+  const showHideDetails = (info: MovieInfo) => {
+    if (detailsShown) {
+      if (info === detailsInfo) {
+        setShowDetails(false);
+        setTimeout(() => {
+          if (alignerRef.current !== null)
+            alignerRef.current.style.width = '30%';
+        }, 400);
+        if (detailsRef.current !== null) {
+          detailsRef.current.style.opacity = '0';
+        }
+
+      }
+      else {
+        if (detailsRef.current !== null) {
+          detailsRef.current.style.opacity = '0';
+          setTimeout(() => {
+            setDetailsInfo(info);
+            if (detailsRef.current !== null)
+              detailsRef.current.style.opacity = '1';
+          }, 300);
+        }
+      }
+    } else {
+      setDetailsInfo(info);
+      setShowDetails(true);
+      if (alignerRef.current !== null)
+        alignerRef.current.style.width = '0%';
+      setTimeout(() => {
+        if (detailsRef.current !== null)
+          detailsRef.current.style.opacity = '1';
+      }, 400);
+    }
+  }
+
 
 
   useEffect(() => {
@@ -47,11 +89,15 @@ function App() {
   return (
     <div className="App">
       <TopBar val={searchTerm} fun={updateSearch} />
-      <div className="cards-container">
-        {movies.map((item: MovieInfo, index: number) => {
-          return <MovieCard key={index} info={item} />
-        })}
-      </div>
+      <main>
+        <div ref={alignerRef} className="cards-aligner"></div>
+        <div className="cards-container">
+          {movies.map((item: MovieInfo, index: number) => {
+            return <MovieCard key={index} info={item} onClick={showHideDetails} />
+          })}
+        </div>
+        <DetailsBox info={detailsInfo} reference={detailsRef} toggleFunction={showHideDetails} />
+      </main>
     </div>
   );
 }

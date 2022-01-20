@@ -3,7 +3,7 @@ $text-color: #eeeeee;
 
 .card {
   background-color: $primary-bg;
-  width: calc(100% - 10px);
+  width: calc(100% - 20px);
   margin: 10px;
   border-radius: 10px;
   height: 200px;
@@ -27,7 +27,8 @@ $text-color: #eeeeee;
 }
 
 .card-right {
-  width: 70%;
+  width: calc(100% - 155px);
+  height: 100%;
   float: left;
 }
 
@@ -54,8 +55,17 @@ $text-color: #eeeeee;
   clear: both;
 }
 
+.card-right-top {
+  height: 85%;
+}
+
+.card-right-bottom {
+  height: 15%;
+}
+
 .ratings {
   margin-left: 25px;
+  
 }
 
 .rating-box {

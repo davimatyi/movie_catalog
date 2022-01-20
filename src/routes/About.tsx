@@ -10,7 +10,8 @@ function About() {
           <div className="header-about">Back</div>
         </Link>
       </header>
-      <main>
+      <div className="about-main">
+        <h1>Beware: this site is under development (and will probably be for a while)</h1>
         <h2>What is the movie catalog?</h2>
         <p>
           The movie catalog is a search engine that you can use to find movies! Pretty self explanatory, isn't it?
@@ -26,7 +27,7 @@ function About() {
           check out the <a href="https://github.com/davimatyi/movie_catalog/" target="newtab">git repo</a>.
         </p>
 
-      </main>
+      </div>
     </>
   );
 }
