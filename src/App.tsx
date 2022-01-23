@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
-import { EmptyMovieInfo, MovieInfo, QueryResponse } from './components/Interfaces';
+import { EmptyMovieInfo, GenreInfo, GenreResponse, MovieInfo, QueryResponse } from './components/Interfaces';
 import MovieCard from './components/Card/Card';
 import TopBar from './components/TopBar/TopBar';
 import './App.scss';
@@ -37,6 +37,7 @@ function App() {
   const [searchTerm, updateSearch] = useState<string>('');
   const [detailsShown, setShowDetails] = useState<boolean>(false);
   const [detailsInfo, setDetailsInfo] = useState<MovieInfo>(EmptyMovieInfo);
+  const [genreList, setGenreList] = useState<GenreInfo[]>([]);
 
   const alignerRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
@@ -86,6 +87,18 @@ function App() {
     })
   }, [searchTerm]);
 
+  useEffect(() => {
+    fetch("https://api.themoviedb.org/3/genre/movie/list?api_key="+apiKey+"&language=en-US")
+      .then((response: Response) => {
+        if (response.ok) return response.json();
+        else throw new Error("Response returned" + response.status);
+      })
+      .then((response: GenreResponse) => setGenreList(response.genres))
+      .catch((error: Error) => alert(error));
+  }, []);
+
+  useEffect(() => console.log(genreList), [genreList]);
+
   return (
     <div className="App">
       <TopBar val={searchTerm} fun={updateSearch} />
@@ -96,7 +109,7 @@ function App() {
             return <MovieCard key={index} info={item} onClick={showHideDetails} />
           })}
         </div>
-        <DetailsBox info={detailsInfo} reference={detailsRef} toggleFunction={showHideDetails} />
+        <DetailsBox info={detailsInfo} reference={detailsRef} toggleFunction={showHideDetails} genreList={genreList} />
       </main>
     </div>
   );

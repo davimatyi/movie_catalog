@@ -47,3 +47,12 @@ export interface PosterInterface {
   path: string,
   fallback: string
 }
+
+export interface GenreInfo {
+  id: number,
+  name: string
+}
+
+export interface GenreResponse {
+  genres: GenreInfo[]
+}
