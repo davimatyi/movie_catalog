@@ -27,7 +27,6 @@ const DetailsBox: FC<{
           <h4>Rating: {info.vote_average} / 10 ({info.vote_count} votes)</h4>
           <h4>Genre(s): {
             info.genre_ids.map((id: number, index: number) => {
-              console.log("genre render: "+genreList);
               if(genreList === undefined || genreList == null) return <>gecisfasz</>;
               const res = genreList.find(g => g.id === id);
               if (res !== undefined) 
@@ -35,6 +34,7 @@ const DetailsBox: FC<{
               else return <></>;
             })
           }</h4>
+          <h4>Original title: {info.original_title}</h4>
         </div>
       </div>
     </div>
